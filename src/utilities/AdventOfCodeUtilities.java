@@ -8,11 +8,12 @@ public class AdventOfCodeUtilities {
 
     public static String ReadPuzzle(String fileName) {
 
-        String puzzle = "";
+        String puzzle;
         try {
             puzzle = new String(Files.readAllBytes(Paths.get("src/puzzles/" + fileName)));
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Cannot read file: " + fileName);
+            throw new RuntimeException(e);
         }
         return puzzle;
     }

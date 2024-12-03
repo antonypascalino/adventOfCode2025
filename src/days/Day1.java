@@ -37,7 +37,7 @@ public class Day1 {
 
         Integer distances = 0;
 
-        for(int i = 0; i < firstList.size(); i++) {
+        for (int i = 0; i < firstList.size(); i++) {
             distances += Math.abs(firstList.get(i) - secondList.get(i));
         }
 
@@ -70,21 +70,15 @@ public class Day1 {
         firstList = firstList.stream().sorted().toList();
         secondList = secondList.stream().sorted().toList();
 
-        Integer result = 0;
+        Long result = 0L;
 
-        for(Integer i : firstList) {
-            int count = 0;
-            for(Integer j : secondList) {
-                if(i.equals(j)) {
-                    count++;
-                }
-            }
-            result += i * count;
+        for (Integer i : firstList) {
+            Long count = secondList.stream().filter(i::equals).count();
+            result += (i * count);
         }
 
         System.out.println(result);
     }
-
 
 
 }
